@@ -1,0 +1,15 @@
+<pre>
+  DOM is using event propagation so when event is fired on all elements where define in it path up to the root element
+  So if:
+    &lt;element-1&gt;
+      &lt;element-2&gt;
+        &lt;element-3&gt;
+  if element-3 event is firing then its goes up to element-2 and well as element-3.  
+
+  To stop this propagation use in the component event handler:
+  <code>
+    onClick($event) 	&#123;
+      event.stopPropagation;
+    &#125;
+  </code>
+</pre>

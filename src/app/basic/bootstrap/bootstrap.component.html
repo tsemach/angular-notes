@@ -1,0 +1,24 @@
+<h5>There are two ways of adding bootstrap support</h5>
+<ol>
+  <li>Adding into angular-cli.json</li>
+  <li>Adding into style.css</li>
+</ol>
+<b>Option-1: using angular-cli.json</b>
+<pre>
+  # npm install --save bootstrap@3
+    
+  // open the file .angular-cli.json and add the boostrap css file in it
+  -) under the section "styles": [ ... ]
+  -) add the entry "../node_modules/bootstrap/dist/css/bootstrap.min.css"    
+</pre>
+<b>Option-2: edit the file sytle.css</b>
+<ul>
+  <li><code>run: npm install bootstrap --save</code></li>
+  <li><code>edit style.css add the line: @import "~bootstrap/dist/css/bootstrap.css;"</code></li>
+</ul>
+<p>Let test the bootstrap by adding a primary button - it should be blue color</p>
+<button class="btn btn-primary">save</button>
+
+
+
+

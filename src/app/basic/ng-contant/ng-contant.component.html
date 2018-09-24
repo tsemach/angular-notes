@@ -1,0 +1,37 @@
+
+Use when needed to inject a contant to the template from outside.
+You can use property binding but in cases where it is more complex contant use ng-contant.
+ng-content enable the component user to customize the content of a component.
+
+<p>For example the template looking like:</p>
+<pre style="color: blueviolet">
+&lt;div class="panel panel-default"&gt;
+  &lt;div class="panel-heading"&gt;
+    <span style="color: darkblue">// identify the ng-contant select as class="heading"</span>
+    &lt;ng-contnat select=".heading"&gt;&lt;/ng-contant&gt;
+  &lt;/div&gt;
+  &lt;div class="panel-body"&gt;
+    <span style="color: darkblue">// identify the ng-contant select as class="body"</span>
+    &lt;ng-contnat select=".body"&gt;&lt;/ng-contant&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+To use this component:
+<pre style="color: blueviolet">
+&lt;the-component&gt;
+  &lt;div class="heading"&gt;&lt;/div&gt;
+  &lt;div class="body"&gt;
+    &lt;h2&gt;This is body&lt;/h2&gt;
+  &lt;/div&gt;    
+&gt;/the-component&gt;
+</pre>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <ng-content select=".heading"></ng-content>
+  </div>
+  <div class="panel-body">
+    <ng-content select=".body"></ng-content>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+
+/**
+ * this apply to all element with classes of 
+ * form-control && ng-touched && ng-invalid.
+ *
+ * Angular add ng-touched && ng-invalid when apply form-control.
+ */
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}

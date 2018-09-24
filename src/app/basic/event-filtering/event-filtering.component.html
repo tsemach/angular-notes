@@ -1,0 +1,15 @@
+
+<pre>
+  Anguler can filtering an event so you don't have to check it with if (event.something === .. like event.keCode === 13 for enter) then ..  
+  <u>For example</u>        
+    <p>// the onKeyUp will called only on pressing enter</p>
+    &lt;input&gt; (keyup.enter)="onKeyUp()"/&gt;
+  <code>
+    onKeyUp() &#123;
+      console.log("Enter was press!");
+    &#125;
+  </code>
+</pre>
+Type few characters then press Enter:
+<p>data = <strong>{{ data }}</strong></p>
+<input (keyup.enter)="onKeyUp($event)"/>

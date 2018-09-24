@@ -1,0 +1,55 @@
+<div [hidden]="submitted">  
+  <h3>Hero Form</h3>
+  {{diagnostic}}
+  <form #heroForm="ngForm" (ngSubmit)="onSubmit(heroForm)">
+    <div class="form-group">
+      <label for="name">Name</label>      
+      <input  class="form-control" type="text" ngModel name="name" #spy #name="ngModel" id="name" required [(ngModel)]="model.name" (change)="log(name)">
+      <div class="alert alert-danger"[hidden]="name.valid || name.pristine">Name is required</div>
+      TODO: remove this: {{model.name}} : {{spy.className}}
+    </div>
+
+    <div class="form-group">
+      <label for="alterEgo">Alter Ego</label>
+      <input type="text" class="form-control" id="alterEgo" ngModel name="alterEgo" #alterEgo="ngModel" [(ngModel)]="model.alterEgo" (change)="log(alterEgo)">
+      TODO: remove this: {{model.alterEgo}}
+    </div>
+
+    <div class="form-group">
+      <label for="power">Hero Power</label>
+      <select class="form-control" id="power" required ngModel name="power" #power="ngModel" [(ngModel)]="model.power" (change)="log(power)">
+        <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+      </select>
+      TODO: remove this: {{model.power}}
+    </div>
+
+    <!-- 
+      *Submit*: the (type="submit") makes it the form submit button. 
+      (ngSubmit)="onSubmit()" #heroForm="ngForm": this make the form accessable with in the submit button.
+      [disabled]="!heroForm.form.valid": bound the overall form validation to disabled attribute.
+
+      *New Hero*: heroForm.reset() need to ba called to reset the heroForm validator flags
+      the form may remember some flags prior to new hero click so need to reset.
+    -->
+    <button type="submit" class="btn btn-success" style="margin-right: 10px" [disabled]="!heroForm.form.valid">Submit</button>
+    <button type="button" class="btn btn-primary" style="margin-right: 10px" (click)="newHero(); heroForm.reset()">New Hero</button>
+
+  </form>  
+</div>
+<div [hidden]="!submitted">
+  <h2>You submitted the following:</h2>
+  <div class="row" style="padding-left: 10px;">
+    <div class="col-xs-3">Name: </div>
+    <div class="col-xs-9  pull-left" style="color: red;">{{ model.name }}</div>
+  </div>
+  <div class="row" style="padding-left: 10px;">
+    <div class="col-xs-3">Alter Ego: </div>
+    <div class="col-xs-9 pull-left" style="color: red;">{{ model.alterEgo }}</div>
+  </div>
+  <div class="row" style="padding-left: 10px;">
+    <div class="col-xs-3">Power: </div>
+    <div class="col-xs-9 pull-left" style="color: red;">{{ model.power }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>

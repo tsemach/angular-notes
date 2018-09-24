@@ -1,0 +1,15 @@
+<h5>Its possible to use a variation of property binding to bing into a html class</h5>
+For example:
+<pre>
+<code>
+  &lt;button class="btn btn-primary" [class.<mark>active</mark>]&gt;save&gt;/button&gt;  
+  <strong>active: is the name of the target class of button</strong>
+  
+  In the component you can use:
+  <strong><code>this.active = true | false</code></strong>
+  </code>
+<pre>
+<div class="row" style="width: 200px;">
+<button class="btn btn-primary" [style.backgroundColor]="yellow">save</button>  
+<button class="btn btn-primary" (click)="onClickMe()">click me</button>  
+</div>
