@@ -23,6 +23,13 @@ export class FormExerciseComponent implements OnInit {
   ngOnInit() {
   }
 
+  // TODO: Remove this when we're done
+  get diagnostic() { return JSON.stringify({
+    name: this.name,
+    category: this.category,
+    isGuarantee: this.isGuarantee}
+  )};
+
   log(what) {
     console.log(what);
   }
@@ -34,5 +41,11 @@ export class FormExerciseComponent implements OnInit {
   onSubmit(heroForm) { 
     this.submitted = true; 
     console.log("name = " + this.name + ", category = " + this.category);
+  }
+
+  newCourse() {
+    this.name = '';
+    this.category = '';
+    this.isGuarantee = false;
   }
 }

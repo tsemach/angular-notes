@@ -1,0 +1,6 @@
+
+ng build  --prod --base-href /angular-notes/
+:
+export dist=${project-dir}/dist
+docker run --name nginx -p 8081:80 -v ${dist}:/usr/share/nginx/html:ro -d nginx
+docker stop nginx ;  docker rm nginx

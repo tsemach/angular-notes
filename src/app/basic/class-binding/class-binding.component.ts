@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class ClassBindingComponent implements OnInit {
   active = false;
 
+  yellow = 'yellow';
+  
   constructor() { }
 
   ngOnInit() {

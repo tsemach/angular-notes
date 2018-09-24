@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HtmlAttrComponent implements OnInit {
 
-  colspen = 2;
+  colspan = 2;
 
   ngOnInit() {
   }

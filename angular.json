@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/github",
+            "outputPath": "dist/angular-notes",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -126,5 +126,5 @@
       }
     }
   },
-  "defaultProject": "github"
+  "defaultProject": "angular-notes"
 }
