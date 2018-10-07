@@ -9,15 +9,15 @@ export class ClassBindingComponent implements OnInit {
   active = false;
 
   yellow = 'yellow';
-  
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  onClickMe() {    
-    this.active = ! this.active;  
-    console.log("[ClassBindingComponent:onClickMe] this.active = " + this.active);
+  onClickMe() {
+    this.active = ! this.active;
+    console.log('[ClassBindingComponent:onClickMe] this.active = ' + this.active);
   }
 
 }
