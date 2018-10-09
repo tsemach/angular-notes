@@ -1,0 +1,47 @@
+
+<div class="panel panel-default">
+<div class="panel-heading">Example of Using Custom Directive</div>
+<div class="panel-body">    
+
+<b class="emphasize">HostListenner</b>: First you need to import <i>HostListenner</i> from @angular/core
+HostListenner able us to subscribe to events from the DOM hosting this element.
+ElementRef: an object include reference to the DOM element.
+<b>[appInputFormat]="'uppercase'"</b> work in case of one attribute pass to the directive. the name of
+the Input property is the directive selector.   
+<pre style="margin-top: 10px;">
+<code>
+  // for example
+  export class InputFormatDirective &#123;
+
+  @Input('appInputFormat') format;
+  
+  constructor(private el: ElementRef) &#123;
+  &#125;
+
+  @HostListener('focus') onfocus() &#123;
+    console.log('on Focus');
+  &#125;
+
+  @HostListener('blur') onblur() &#123;
+    let value: string = this.el.nativeElement.value;
+    if (this.format == 'lowercase') &#123;
+      this.el.nativeElement.value = value.toLowerCase();
+    &#125;
+    else &#123;
+      this.el.nativeElement.value = value.toLocaleUpperCase();
+    &#125;
+  &#125;
+&#125;
+
+// the html is like:
+&lt;input type="text" [appInputFormat]="'uppercase'"&gt;
+</code>
+</pre>
+
+<div style="margin-top: 10px;">
+<input type="text" [appInputFormat]="'uppercase'" [ngStyle]="{
+  color: red
+}">
+</div>
+</div>
+</div>

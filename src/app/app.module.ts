@@ -29,6 +29,8 @@ import { AppHttpModule } from './http/http.module';
 // import { FormExerciseComponent } from './forms/form-examples/form-exercise/form-exercise.component';
 // import { FormExamplesComponent } from './forms/form-examples/form-examples.component';
 import { RoutingComponent } from './routing/routing.component';
+import { DirectiveComponent } from './basic/directive/directive.component';
+import { InputFormatDirective } from './basic/directive/input-format.directive';
 import { AppBootstrapModule } from './bootstrap/bootstrap.module';
 import { HttpComponent } from './http/http.component';
 
@@ -44,6 +46,9 @@ import { HttpComponent } from './http/http.component';
     NgContantComponent,
     TwoWayBindingComponent,
     BasicComponent,
+    RoutingComponent,    
+    DirectiveComponent,
+    InputFormatDirective
     // FormsComponent,
     // FormNgmodelComponent,
     // FormValidationsComponent,
@@ -53,7 +58,6 @@ import { HttpComponent } from './http/http.component';
     // FormAngularComponent,
     // FormExerciseComponent,
     // FormExamplesComponent,
-    RoutingComponent,
   ],
   imports: [
     BrowserModule,

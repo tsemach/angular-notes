@@ -9,3 +9,7 @@ body {
 button { 
   padding-left: 10px; 
 }
+
+.emphasize {
+  color: red;
+}
