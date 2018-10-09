@@ -1,4 +1,3 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -19,6 +18,7 @@ import { NgContantComponent } from './basic/ng-contant/ng-contant.component';
 import { TwoWayBindingComponent } from './basic/two-way-binding/two-way-binding.component';
 import { BasicComponent } from './basic/basic.component';
 import { AppFormsModule } from './forms/forms.module';
+import { AppHttpModule } from './http/http.module';
 // import { FormsComponent } from './forms/forms.component';
 // import { FormNgmodelComponent } from './forms/form-ngmodel/form-ngmodel.component';
 // import { FormValidationsComponent } from './forms/form-validations/form-validations.component';
@@ -30,6 +30,7 @@ import { AppFormsModule } from './forms/forms.module';
 // import { FormExamplesComponent } from './forms/form-examples/form-examples.component';
 import { RoutingComponent } from './routing/routing.component';
 import { AppBootstrapModule } from './bootstrap/bootstrap.module';
+import { HttpComponent } from './http/http.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AppBootstrapModule } from './bootstrap/bootstrap.module';
     BrowserAnimationsModule,
     AppRoutingModule,
     AppBootstrapModule,
-    AppFormsModule
+    AppFormsModule,
+    AppHttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

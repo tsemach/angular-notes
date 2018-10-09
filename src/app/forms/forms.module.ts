@@ -17,10 +17,13 @@ import { FormDisablesubmitComponent } from './form-disablesubmit/form-disablesub
 import { FormAngularComponent } from './form-examples/form-angular/form-angular.component';
 import { FormExerciseComponent } from './form-examples/form-exercise/form-exercise.component';
 import { FormExamplesComponent } from './form-examples/form-examples.component';
+import { FormsServicesComponent } from './forms-services/forms-services.component';
+import { FormsServiceAddComponent } from './forms-services/forms-service-add/forms-service-add.component';
 
 const appRoutes: Routes = [
     { path: 'forms', 'component': FormsComponent, children: [
-        { path: 'examples', 'component': FormExamplesComponent }
+        { path: 'examples', 'component': FormExamplesComponent },
+        { path: 'services', 'component': FormsServicesComponent }
     ] },
   ];
 
@@ -36,6 +39,8 @@ const appRoutes: Routes = [
     FormAngularComponent,
     FormExerciseComponent,
     FormExamplesComponent,
+    FormsServicesComponent,
+    FormsServiceAddComponent,
   ],
   imports: [
     BrowserModule,

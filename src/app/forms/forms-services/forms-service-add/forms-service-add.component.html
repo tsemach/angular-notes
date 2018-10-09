@@ -1,0 +1,66 @@
+<div [hidden]="submitted">
+    <h3>Exercise Form</h3>
+    {{diagnostic}}
+    <form #serviceForm="ngForm" (ngSubmit)="onSubmit(serviceForm)">
+      <div class="form-group">
+        <b><label for="serviceName">Service Name</label></b>
+        <input 
+          class="form-control" 
+          type="text" ngModel name="serviceName" 
+          #spy #serviceNameRef="ngModel" 
+          id="serviceName" 
+          required 
+          minlength="4" 
+          [(ngModel)]="serviceName" 
+          (change)="log(serviceName)">
+        <div class="alert alert-danger" [hidden]="serviceNameRef.valid || serviceNameRef.pristine">Service Name is required</div>
+        <div class="alert alert-danger" *ngIf="serviceNameRef.errors && serviceNameRef.errors.minlength">Name minimum charachters is {{ serviceNameRef.errors.minlength.requiredLength}}</div>
+  
+        TODO: remove this: {{serviceName}} : {{spy.className}}
+      </div>
+  
+      <div class="form-group">
+        <b><label for="jobs">Select a Job</label></b>
+        <select class="form-control" id="jobs" required ngModel name="jobService" #jobService="ngModel" [(ngModel)]="job" (change)="log(jobService)">
+          <option *ngFor="let job of jobs" [value]="job">{{job}}</option>
+        </select>
+        TODO: remove this: {{job}}
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ngModel name="isGuarantee" [(ngModel)]="isGuarantee">
+            Check for 30 days many back guarantee
+            </label>
+            <p> {{serviceForm.value | json }}</p>
+        </div>
+      </div>
+  
+      <!-- 
+        *Submit*: the (type="submit") makes it the form submit button. 
+        (ngSubmit)="onSubmit()" #serviceForm="ngForm": this make the form accessable with in the submit button.
+        [disabled]="!serviceForm.form.valid": bound the overall form validation to disabled attribute.
+  
+        *New Hero*: serviceForm.reset() need to ba called to reset the serviceForm validator flags
+        the form may remember some flags prior to new hero click so need to reset.
+      -->
+      <button type="submit" class="btn btn-success" style="margin-right: 10px" [disabled]="!serviceForm.form.valid">Submit</button>
+      <button type="button" class="btn btn-primary" style="margin-right: 10px" (click)="newCourse(); serviceForm.reset()">New Course</button>
+    </form>  
+  </div>
+  
+<div [hidden]="!submitted">
+  <h3>You submitted the following:</h3>
+  <div class="row" style="padding-left: 10px;">
+    <div class="col-xs-3">Name: </div>
+    <div class="col-xs-9  pull-left" style="color: red;">{{ serviceName }}</div>
+  </div>
+  <div class="row" style="padding-left: 10px;">
+    <div class="col-xs-3">Job: </div>
+    <div class="col-xs-9 pull-left" style="color: red;">{{ job }}</div>
+  </div>
+  <div class="row" style="padding-left: 10px;">
+    <div class="col-xs-3">isGuarantee: </div>
+    <div class="col-xs-9 pull-left" style="color: red;">{{ isGuarantee }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>
