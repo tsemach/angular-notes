@@ -28,7 +28,7 @@ export class FormExerciseComponent implements OnInit {
     name: this.name,
     category: this.category,
     isGuarantee: this.isGuarantee}
-  )};
+  )}
 
   log(what) {
     console.log(what);
@@ -38,9 +38,9 @@ export class FormExerciseComponent implements OnInit {
     this.isGuarantee = value;
   }
 
-  onSubmit(heroForm) { 
-    this.submitted = true; 
-    console.log("name = " + this.name + ", category = " + this.category);
+  onSubmit(heroForm) {
+    this.submitted = true;
+    console.log('name = ' + this.name + ', category = ' + this.category);
   }
 
   newCourse() {
