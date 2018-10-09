@@ -27,6 +27,8 @@ import { FormAngularComponent } from './forms/form-examples/form-angular/form-an
 import { FormExerciseComponent } from './forms/form-examples/form-exercise/form-exercise.component';
 import { FormExamplesComponent } from './forms/form-examples/form-examples.component';
 import { RoutingComponent } from './routing/routing.component';
+import { DirectiveComponent } from './basic/directive/directive.component';
+import { InputFormatDirective } from './basic/directive/input-format.directive';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { RoutingComponent } from './routing/routing.component';
     FormAngularComponent,
     FormExerciseComponent,
     FormExamplesComponent,
-    RoutingComponent
+    RoutingComponent,    
+    DirectiveComponent,
+    InputFormatDirective
   ],
   imports: [
     BrowserModule,
