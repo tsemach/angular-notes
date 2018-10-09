@@ -1,0 +1,56 @@
+
+
+<div class='pre-like'>
+<h5><strong>Creating Data: Send post to server</strong></h5>
+<ol>
+  <li>Get input value from input element</li>
+  <li>Send a post reguest to server</li>
+  <li>Server reply with Id of the new adding item</li>
+  <li>Add the new post with the new Id into this.posts</li>
+</ol>
+</div>
+
+<pre style="margin-bottom: 10px;">
+<code>
+  <span class="code-method">createPost</span>(input: HTMLInputElement) &#123;
+    let post = &#123; title: input.value &#125;
+    input.value = '';
+
+    <span class="code-comment">// send post to server - url, post</span>
+    <span class="code-keyword">this</span>.<span class="code-member">http</span>(this.url + 'post', post)
+      .subscribe(response => &#123;
+        post['id'] = response.json().id;
+
+        // don't delete, add in place 0 the post object
+        this.posts.splice(0, 0, post);
+      &#125;);
+  &#125;
+
+// html: input new title and display the post
+&lt;input 
+  (keyup.enter)="createPost(title)" #title
+  type="text" 
+  class="form-control"&gt;
+
+&lt;ul class="list-group"&gt;
+  &lt;li 
+    *ngFor="let post of posts"
+    class="list-group-item"&gt;
+    &#125;&#125; post.title &#123;&#123;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code>
+</pre>
+
+<input 
+  (keyup.enter)="createPost(title)" #title
+  type="text" 
+  class="form-control">
+
+<ul class="list-group">
+  <li 
+    *ngFor="let post of posts"
+    class="list-group-item">
+    {{ post.title }}
+  </li>
+</ul>

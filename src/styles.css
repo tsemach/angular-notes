@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
-  @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
   padding-left: 10px;   
@@ -12,4 +12,34 @@ button {
 
 .emphasize {
   color: red;
+}
+
+.pre-like {
+  color: #333;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding-left: 10px;  
+  margin: 0px;
+}
+
+.code-html {
+  color: rgb(10, 69, 117);
+}
+
+.code-method {
+  color: blue;  
+  font-weight: bold;  
+}
+
+.code-keyword {
+  color: rgb(34, 48, 255);  
+  font-weight: bold;  
+}
+
+.code-comment {
+  color: green;  
+}
+
+.code-member {
+  color: rgb(7, 133, 172);
 }

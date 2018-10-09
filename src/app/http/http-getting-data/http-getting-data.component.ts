@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-http-getting-data',
@@ -6,8 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./http-getting-data.component.css']
 })
 export class HttpGettingDataComponent implements OnInit {
+  
+  posts: any[];
 
-  constructor() { }
+  constructor(http: Http) {     
+    http.get('http://localhost:3000/http/get')
+      .subscribe(response =>  {
+          console.log(response.json());
+          this.posts = response.json();
+        }
+      );
+  }
 
   ngOnInit() {
   }
