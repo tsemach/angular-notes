@@ -1,0 +1,85 @@
+
+
+<div class='pre-like'>
+<h5><strong>Extract Service: move all http handing details to service</strong></h5>
+<ol>
+  <li>Get input value from input element</li>
+  <li>Send a post reguest to server</li>
+  <li>Server reply with Id of the new adding item</li>
+  <li>Update a post</li>
+</ol>
+</div>
+
+<pre style="margin-bottom: 10px;">
+<code>  
+<span class="code-comment">// move all http details to HttpService class</span>
+export class HttpService &#123;
+
+  url = <span class="code-string">'http://localhost:3000/http/'</span>;
+
+  constructor(private http: Http) &#123; &#125;
+
+  <span class="code-method">getPosts</span>() &#123;
+    <span class="code-keyword">return</span> this.http.get(this.url + 'get');
+  &#125;
+
+  <span class="code-method">createPost</span>(post) &#123;
+    <span class="code-keyword">return</span> this.http.post(this.url + 'post', post);
+  &#125;
+
+  <span class="code-method">updatePost</span>(post) &#123;
+    <span class="code-keyword">return</span> this.http.put(this.url + 'put/' + post.id, post);
+  &#125;
+
+  <span class="code-method">deletePost</span>(id) &#123;
+    <span class="code-keyword">return</span> this.http.delete(this.url + 'delete/' + id);      
+  &#125;
+&#125;
+
+// html: input new title and display the post
+&lt;<span class="code-html">input</span>
+  [(ngModel)]="input"
+  (keyup.enter)="<span class="code-string">createPost(title)</span>" #title
+  type="text" 
+  <span class="code-member">class</span>="form-control"&gt;
+
+&lt;ul <span class="code-member">class</span>=<span class="code-string">"list-group"</span>&gt;
+  &lt;li 
+    <span class="code-html">*ngFor</span>=<span class="code-string">"let post of posts"</span>
+    &lt;<span class="code-html">button</span>
+      (click)=<span class="code-string">"deletePost(post)"</span>
+      class="btn btn-default btn-sm"&gt;Delete
+    &lt;/<span class="code-html">button</span>&gt;  
+    &lt;<span class="code-html">button</span>
+      (click)=<span class="code-string">"updatePost(post)"</span>
+      class="btn btn-default btn-sm"&gt;Update
+    &lt;/<span class="code-html">button</span>&gt;
+    <span class="code-member">class</span>=<span class="code-string">"list-group-item"</span>&gt;
+    &#123; &#123; post.title &#125; &#125;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code>
+</pre>
+
+<input 
+  [(ngModel)]="input"
+  (keyup.enter)="createPost(title)" #title
+  type="text" 
+  class="form-control">
+
+<ul class="list-group">
+  <li 
+    *ngFor="let post of posts"
+    class="list-group-item">
+    <button 
+      (click)="deletePost(post)"
+      class="btn btn-default btn-sm">Delete
+    </button>
+    <button 
+      (click)="updatePost(post)"
+      class="btn btn-default btn-sm">Update
+    </button>
+    {{ post.title }}
+  </li>
+</ul>
+

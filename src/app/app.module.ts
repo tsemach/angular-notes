@@ -19,15 +19,6 @@ import { TwoWayBindingComponent } from './basic/two-way-binding/two-way-binding.
 import { BasicComponent } from './basic/basic.component';
 import { AppFormsModule } from './forms/forms.module';
 import { AppHttpModule } from './http/http.module';
-// import { FormsComponent } from './forms/forms.component';
-// import { FormNgmodelComponent } from './forms/form-ngmodel/form-ngmodel.component';
-// import { FormValidationsComponent } from './forms/form-validations/form-validations.component';
-// import { FormNgformComponent } from './forms/form-ngform/form-ngform.component';
-// import { FormNgmodelgroupComponent } from './forms/form-ngmodelgroup/form-ngmodelgroup.component';
-// import { FormDisablesubmitComponent } from './forms/form-disablesubmit/form-disablesubmit.component';
-// import { FormAngularComponent } from './forms/form-examples/form-angular/form-angular.component';
-// import { FormExerciseComponent } from './forms/form-examples/form-exercise/form-exercise.component';
-// import { FormExamplesComponent } from './forms/form-examples/form-examples.component';
 import { RoutingComponent } from './routing/routing.component';
 import { DirectiveComponent } from './basic/directive/directive.component';
 import { InputFormatDirective } from './basic/directive/input-format.directive';
@@ -48,16 +39,7 @@ import { HttpComponent } from './http/http.component';
     BasicComponent,
     RoutingComponent,    
     DirectiveComponent,
-    InputFormatDirective
-    // FormsComponent,
-    // FormNgmodelComponent,
-    // FormValidationsComponent,
-    // FormNgformComponent,
-    // FormNgmodelgroupComponent,
-    // FormDisablesubmitComponent,
-    // FormAngularComponent,
-    // FormExerciseComponent,
-    // FormExamplesComponent,
+    InputFormatDirective,
   ],
   imports: [
     BrowserModule,

@@ -1,39 +1,39 @@
 <pre>
-    Like ngModel create a form-control angular create form-group for each form element.
-    <b>ngForm</b>: is a directive (the name is a the selector). Angular automatic apply the 
-    ngForm directive (unless is define with not(ngForm)).
-    <b>ngSubmit</b>: output property of ngForm. We can bind the template variable to ngFrom and 
-    send it to an event property.
-    <b>fm.form.values</b>: include the values of the form-controls inside the group. This can use to
-    send directrly to server.
-    
-    &lt;form <b style="color:red;">#fm="ngForm" (ngSubmit)="submit(fm)"</b>&gt;
-      &lt;div class="form-group"&gt;
-        &lt;label for="firstName"&gt;First Name&lt;/label&gt;
-        &lt;input <b style="color:red;">require minlegnth="3" maxlength=10 pattern="banana" </b> <b>ngModel name="firstName"</b> #firstName (change)="log(firstName)" class="form-control" type="text" id="firstName"&gt;
-        &lt;div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid"&gt;
-          &lt;div *ngIf="firstName.errors.required">First name is require ..&lt;/div&gt;
-          &lt;div *ngIf="firstName.errors.minlength">First name should be minimum 3 charachters&lt;/div&gt;
-          &lt;div *ngIf="firstName.errors.pattern">First name doesn't match the pattern&lt;/div&gt;        
-        &lt;/div&gt;
-        &lt;button class="btn btn-primary"&gt;Submit&lt;button&gt;
-      &lt;/div&gt;
-    &lt;/form&gt;
-  </pre>
-  <form #fm="ngForm" (ngSubmit)="submit(fm)">
-    <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input ngModel name="firstName" minlegnth="3" maxlength=10 pattern="banana" #firstName="ngModel" (change)="log(firstName)" class="form-control" type="text" id="firstName">
-      <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
-        <div *ngIf="firstName.errors.required">First name is require ..</div>
-        <div *ngIf="firstName.errors.minlength">First name should be minimum {{firstName.errors.minlength.requiredLength}} charachters</div>
-        <div *ngIf="firstName.errors.pattern">First name doesn't match the pattern</div>
-      </div>
-  
-    </div>    
-    <!-- <div class="form-group">
-      <label for="comment">Comment</label>
-      <textarea ngModel name="comment" id="" cols="30" rows="10" class="form-control"></textarea>
-    </div> -->
-      <button class="btn btn-primary">Submit</button>
-  </form>
+Like ngModel create a form-control angular create form-group for each form element.
+<b>ngForm</b>: is a directive (the name is a the selector). Angular automatic apply the 
+ngForm directive (unless is define with not(ngForm)).
+<b>ngSubmit</b>: output property of ngForm. We can bind the template variable to ngFrom and 
+send it to an event property.
+<b>fm.form.values</b>: include the values of the form-controls inside the group. This can use to
+send directrly to server.
+
+&lt;form <b style="color:red;">#fm="ngForm" (ngSubmit)="submit(fm)"</b>&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="firstName"&gt;First Name&lt;/label&gt;
+    &lt;input <b style="color:red;">require minlegnth="3" maxlength=10 pattern="banana" </b> <b>ngModel name="firstName"</b> #firstName (change)="log(firstName)" class="form-control" type="text" id="firstName"&gt;
+    &lt;div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid"&gt;
+      &lt;div *ngIf="firstName.errors.required">First name is require ..&lt;/div&gt;
+      &lt;div *ngIf="firstName.errors.minlength">First name should be minimum 3 charachters&lt;/div&gt;
+      &lt;div *ngIf="firstName.errors.pattern">First name doesn't match the pattern&lt;/div&gt;        
+    &lt;/div&gt;
+    &lt;button class="btn btn-primary"&gt;Submit&lt;button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+<form #fm="ngForm" (ngSubmit)="submit(fm)">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input ngModel name="firstName" minlegnth="3" maxlength=10 pattern="banana" #firstName="ngModel" (change)="log(firstName)" class="form-control" type="text" id="firstName">
+    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+      <div *ngIf="firstName.errors.required">First name is require ..</div>
+      <div *ngIf="firstName.errors.minlength">First name should be minimum {{firstName.errors.minlength.requiredLength}} charachters</div>
+      <div *ngIf="firstName.errors.pattern">First name doesn't match the pattern</div>
+    </div>
+
+  </div>    
+  <!-- <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea ngModel name="comment" id="" cols="30" rows="10" class="form-control"></textarea>
+  </div> -->
+    <button class="btn btn-primary">Submit</button>
+</form>

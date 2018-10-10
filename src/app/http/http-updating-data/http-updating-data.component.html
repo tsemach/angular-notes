@@ -1,33 +1,29 @@
 
 
 <div class='pre-like'>
-<h5><strong>Creating Data: Send post to server</strong></h5>
+<h5><strong>Update post: update a post using http put request</strong></h5>
 <ol>
   <li>Get input value from input element</li>
   <li>Send a post reguest to server</li>
   <li>Server reply with Id of the new adding item</li>
-  <li>Add the new post with the new Id into this.posts</li>
+  <li>Update a post</li>
 </ol>
 </div>
 
 <pre style="margin-bottom: 10px;">
 <code>
-<span class="code-method">createPost</span>(input: HTMLInputElement) &#123;
-  let post = &#123; title: input.value &#125;
-  input.value = '';
-
-  <span class="code-comment">// send post to server - url, post</span>
-  <span class="code-keyword">this</span>.<span class="code-member">http</span>(this.url + 'post', post)
+<span class="code-comment">// send put to server - url/:id, post</span>
+<span class="code-method">updatePost</span>(post) &#123;
+  <span class="code-keyword">this</span>.http.put(this.url + 'put/' + post.id, post)
     .subscribe(response => &#123;
-      post['id'] = response.json().id;
-
-      // don't delete, add in place 0 the post object
-      this.posts.splice(0, 0, post);
+      console.log(response);
+      <span class="code-keyword">this</span>.input = JSON.stringify(response.json());
     &#125;);
-&#125;
+  &#125;
 
 // html: input new title and display the post
 &lt;<span class="code-html">input</span>
+  [(ngModel)]="input"
   (keyup.enter)="<span class="code-string">createPost(title)</span>" #title
   type="text" 
   <span class="code-member">class</span>="form-control"&gt;
@@ -35,6 +31,10 @@
 &lt;ul <span class="code-member">class</span>=<span class="code-string">"list-group"</span>&gt;
   &lt;li 
     <span class="code-html">*ngFor</span>=<span class="code-string">"let post of posts"</span>
+    &lt;<span class="code-html">button</span>
+      (click)=<span class="code-string">"updatePost(post)"</span>
+      class="btn btn-default btn-sm"&gt;Update
+    &lt;/<span class="code-html">button</span>&gt;
     <span class="code-member">class</span>=<span class="code-string">"list-group-item"</span>&gt;
     &#123; &#123; post.title &#125; &#125;
   &lt;/li&gt;
@@ -43,6 +43,7 @@
 </pre>
 
 <input 
+  [(ngModel)]="input"
   (keyup.enter)="createPost(title)" #title
   type="text" 
   class="form-control">
@@ -51,6 +52,11 @@
   <li 
     *ngFor="let post of posts"
     class="list-group-item">
+    <button 
+      (click)="updatePost(post)"
+      class="btn btn-default btn-sm">Update
+    </button>
     {{ post.title }}
   </li>
 </ul>
+

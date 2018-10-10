@@ -3,7 +3,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-  padding-left: 10px;   
+  padding-left: 10px;     
 }
 
 button { 
@@ -22,13 +22,31 @@ button {
   margin: 0px;
 }
 
+.hr-note {
+  border-width: 1px; 
+  border-color: rgb(11, 100, 218);
+}
+
+.div-note {
+  border-color: black; 
+  border-style: solid; 
+  border-width: 1px;
+  padding: 0px;
+}
+
 .code-html {
   color: rgb(10, 69, 117);
+  font-weight: bold;  
 }
 
 .code-method {
   color: blue;  
   font-weight: bold;  
+}
+
+.code-string {
+  color: rgb(148, 74, 40);  
+  font-weight: bold;    
 }
 
 .code-keyword {

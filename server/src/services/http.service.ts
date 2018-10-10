@@ -24,8 +24,7 @@ export class HttpService {
     });
     
     router.get('/get', (req, res) => {
-      // route: /http/post ...
-      console.log('http: GET got call from client post ' + req);
+      // route: /http/get ...      
       console.log('http: GET data received was: ' + JSON.stringify(req.body));
 
       // set the appropriate HTTP header
@@ -35,9 +34,11 @@ export class HttpService {
     
     router.post('/post', (req, res) => {
       // route: /http/post ...
-      console.log('angular: POST got call from client post ' + req);
       console.log('angular: POST data received was: ' + JSON.stringify(req.body));
+      console.log('angular: POST this.data.length: ' + this.data.length);
 
+      this.data.push(req.body);
+      console.log('angular: POST after adding new post, this.data.length: ' + this.data.length);
       // set the appropriate HTTP header
       res.setHeader('Content-Type', 'application/json');
 
@@ -45,6 +46,30 @@ export class HttpService {
         id: this.data.length
       });
     });
+
+    router.put('/put/:id', (req, res) => {
+      // route: /http/post ...
+      //console.log('angular: PUT got call from client put ' + req);
+      console.log('angular: PUT id = ' + req.params.id);
+      console.log('angular: PUT data received was: ' + JSON.stringify(req.body));
+
+      // set the appropriate HTTP header
+      res.setHeader('Content-Type', 'application/json');
+
+      res.json(req.body);
+    });
+
+    router.delete('/delete/:id', (req, res) => {
+      // route: /http/delete ...
+      console.log('angular: DELETE id = ' + req.params.id);
+      console.log('angular: DELETE data received was: ' + JSON.stringify(req.body));
+          
+      // set the appropriate HTTP header
+      res.setHeader('Content-Type', 'application/json');
+
+      res.json(req.body);
+    });
+
 
     return router;
   // --------------------------------------------------------------------------

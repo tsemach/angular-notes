@@ -2,31 +2,31 @@
 <h5><strong>Getiting Data: read posts from server</strong></h5>
 <ol>
   <li>reading posts from server (array of jsons)</li>
-  <li>display each with *ngFor</li>
+  <li>display each with <span class="code-html">*ngFor</span></li>
 </ol>
 </div>
 
 <pre style="margin-bottom: 10px;">
 <code>
-  <span class="code-comment">// code: reading posts from server</span>
-  posts: any[];
-  url = 'http://localhost:3000/http/';
-  
-  <span class="code-method">constructor</span>(private http: Http) &#123;
-    http.get(this.url + 'get')
-      .subscribe(response =>  &#123;
-          console.log(response.json());
-          this.posts = response.json();
-        &#125;
-      );
-  }
+<span class="code-comment">// code: reading posts from server</span>
+posts: any[];
+url = 'http://localhost:3000/http/';
+
+<span class="code-method">constructor</span>(private http: Http) &#123;
+  http.get(this.url + 'get')
+    .subscribe(response =>  &#123;
+        console.log(response.json());
+        this.posts = response.json();
+      &#125;
+    );
+  &#125;
 
 <span class="code-comment">// html: display all posts with </span>
-&lt;ul class="list-group"&gt;
+&lt;ul <span class="code-member">class</span>=<span class="code-string">"list-group"</span>&gt;
   &lt;li 
-    *ngFor="let post of posts"
-    class="list-group-item"&gt;
-    &#125;&#125; post.title &#123;&#123;
+    <span class="code-html">*ngFor</span>=<span class="code-string">let post of posts"</span>
+    <span class="code-member">class</span>=<span class="code-string">"list-group-item"</span>&gt;
+    &#123; &#123; post.title &#125; &#125;
   &lt;/li&gt;
 &lt;/ul&gt;
 </code>
