@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
+import { HttpExtractService } from './services/http-extract-service.service';
 
 @Component({
   selector: 'app-http-extract-service',
@@ -11,7 +11,7 @@ export class HttpExtractServiceComponent implements OnInit {
   input = '';
   posts: any[];
     
-  constructor(private http: HttpService) {    
+  constructor(private http: HttpExtractService) {    
   }
 
   createPost(input: HTMLInputElement) {
@@ -36,13 +36,15 @@ export class HttpExtractServiceComponent implements OnInit {
   }
 
   deletePost(post) {
-    this.http.deletePost(post.id)
+    console.log('[http-extract-service:deletePost] post = ' + JSON.stringify(post));
+    console.log('[http-extract-service:deletePost] post["id"] = ' + post["id"]);
+    this.http.deletePost(post['id'])
       .subscribe(response => {
         let index = this.posts.indexOf(post);
         this.posts.splice(index, 1);
       });
   }
-  
+
   ngOnInit() {
     this.http.getPosts()
       .subscribe(response =>  {

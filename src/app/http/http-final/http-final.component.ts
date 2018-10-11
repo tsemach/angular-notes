@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../http.service';
+import { HttpFinalService } from './services/http-final.service';
+import { HttpError } from './common/http.error';
+import { HttpNotFoundError } from './common/http-not-found.error';
+import { HttpBadInputError } from './common/http-bad-request.error';
 
 @Component({
   selector: 'app-http-final',
@@ -11,60 +14,64 @@ export class HttpFinalComponent implements OnInit {
   input = '';
   posts: any[];
     
-  constructor(private http: HttpService) {    
+  constructor(private http: HttpFinalService) {    
   }
 
   ngOnInit() {
-    this.http.getPosts()
-      .subscribe(response =>  {
-          console.log(response.json());
-          this.posts = response.json();
-        }, 
-        (error) => {
-          alert('GET: An unexpected error occurred.');
-          console.log(error);
-        });
+    this.http.getAll()
+      .subscribe(posts => this.posts = posts);      
   }
 
   createPost(input: HTMLInputElement) {
-    let post = { title: input.value }
+    let post = { title: input.value }    
+    this.posts.splice(0, 0, post);   // don't delete, add in place 0 the post object
+
     input.value = '';
 
-    this.http.createPost(post)
-      .subscribe(response => {
-        post['id'] = response.json().id;
+    this.http.create(post)
+      .subscribe(newPost => {
+        console.log('[final:createPost] response.json() = ' + newPost);
+        post['id'] = newPost.id;
 
-        // don't delete, add in place 0 the post object
-        this.posts.splice(0, 0, post);
       }, 
-      (error) => {
-        alert('POST: An unexpected error occurred.');
-        console.log(error);
+      (error: HttpError) => {
+        if (error instanceof HttpBadInputError) {
+          this.posts.splice(0, 1);
+          
+          alert('POST: bad request.');
+          this.input = 'ERROR: ';
+        }
+        else throw error;
       });
   }
 
   updatePost(post) {
-    this.http.updatePost(post)
-      .subscribe(response => {
-        console.log(response);
-        this.input = JSON.stringify(response.json());
-      }, 
-      (error) => {
-        alert('PUT: An unexpected error occurred.');
-        console.log(error);
+    this.http.update(post)
+      .subscribe(updatePost => {
+        console.log(updatePost);
+        this.input = JSON.stringify(updatePost);
       });
   }
 
   deletePost(post) {
-    this.http.deletePost(post.id)
-      .subscribe(response => {
-        let index = this.posts.indexOf(post);
-        this.posts.splice(index, 1);
-      }, 
-      (error) => {
-        alert('DELETE: An unexpected error occurred.');
-        console.log(error);
-      });
+    this.input = JSON.stringify(post);
+    console.log('[http.final:deletePost] going to delete post.id = ' + post.id);
+
+    let index = this.posts.indexOf(post);
+    this.posts.splice(index, 1);
+
+    this.http.delete(post.id)
+      .subscribe(
+        null, 
+        (error: HttpError) => {
+          this.posts.splice(index, 0, post);   // don't delete, add in place 0 the post object
+
+          if (error instanceof HttpNotFoundError) {
+            console.log('found HttpNotFoundError');
+            alert('This post is already deleted');
+          }
+          else throw error;
+        });
   }
   
 }

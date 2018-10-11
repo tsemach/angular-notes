@@ -42,6 +42,16 @@ export class HttpService {
       // set the appropriate HTTP header
       res.setHeader('Content-Type', 'application/json');
 
+      if (0) {
+        res.status(400);
+
+        res.json({
+          id: this.data.length
+        });
+
+        return;
+      }
+
       res.json({
         id: this.data.length
       });
@@ -62,12 +72,20 @@ export class HttpService {
     router.delete('/delete/:id', (req, res) => {
       // route: /http/delete ...
       console.log('angular: DELETE id = ' + req.params.id);
+      console.log('angular: DELETE this.data.length = ' + this.data.length);
       console.log('angular: DELETE data received was: ' + JSON.stringify(req.body));
-          
+                    
       // set the appropriate HTTP header
       res.setHeader('Content-Type', 'application/json');
+      if (req.params.id >= this.data.length) {
+        console.log('angular: DELETE set status to 404');
 
-      res.json(req.body);
+        res.status(404);
+        res.json(req.body);
+      }
+      else {
+        res.json(req.body);
+      }
     });
 
 
