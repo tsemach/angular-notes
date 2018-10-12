@@ -1,3 +1,25 @@
+
+<div class="btn-group btn-group-toggle" data-toggle="buttons" style="padding-left: 5px; padding-bottom: 5px;">
+  <label class="btn btn-secondary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked [routerLink]="['/http', 'mosh']" > Mosh
+  </label>
+</div>
+
+<!-- <div class="row">
+  <a 
+    class="nav-link" 
+    [routerLink]="['/forms', 'examples']" 
+    style="background-color: black; color: coral; width: 80px; margin-bottom: 10px; margin-left: 15px;" 
+    href="#">Examples</a>
+
+    <a 
+    class="nav-link" 
+    [routerLink]="['/forms', 'services']" 
+    style="background-color: black; color: coral; width: 80px; margin-bottom: 10px; margin-left: 15px;" 
+    href="#">Services</a>    
+</div> -->
+<router-outlet></router-outlet>
+
 <div class="row">
   <!-- this is the left column -->
   <div class="col-6" style="border-style: ridge;">  

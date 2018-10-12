@@ -8,14 +8,14 @@ import 'rxjs/add/operator/takeWhile';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-import { HttpFinalError } from '../common/http-final.error';
-import { HttpFinalNotFoundError } from '../common/http-final-not-found.error';
-import { HttpFinalBadInputError } from '../common/http-final-bad-request.error';
+import { HttpMoshError } from '../common/http-mosh.error';
+import { HttpMoshNotFoundError } from '../common/http-mosh-not-found.error';
+import { HttpMoshBadInputError } from '../common/http-mosh-bad-request.error';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpFinalDataService {
+export class HttpMoshDataService {
   
   //url = 'http://jsonplaceholder.typicode.com/posts'
 
@@ -54,13 +54,12 @@ export class HttpFinalDataService {
 
   private handleError(error: Response) {
     if (error.status === 400) {
-      return Observable.throw(new HttpFinalBadInputError(error.json()));
+      return Observable.throw(new HttpMoshBadInputError(error.json()));
     }
   
     if (error.status === 404) {
-      return Observable.throw(new HttpFinalNotFoundError());
+      return Observable.throw(new HttpMoshNotFoundError());
     }
-    return Observable.throw(new HttpFinalError(error.json()));
+    return Observable.throw(new HttpMoshError(error.json()));
   }
 }
-  

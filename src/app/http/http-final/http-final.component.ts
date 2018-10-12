@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpFinalService } from './services/http-final.service';
-import { HttpError } from './common/http.error';
-import { HttpNotFoundError } from './common/http-not-found.error';
-import { HttpBadInputError } from './common/http-bad-request.error';
+import { HttpFinalError } from './common/http-final.error';
+import { HttpFinalNotFoundError } from './common/http-final-not-found.error';
+import { HttpFinalBadInputError } from './common/http-final-bad-request.error';
 
 @Component({
   selector: 'app-http-final',
@@ -36,8 +36,8 @@ export class HttpFinalComponent implements OnInit {
         post['id'] = newPost.id;
 
       }, 
-      (error: HttpError) => {
-        if (error instanceof HttpBadInputError) {
+      (error: HttpFinalError) => {
+        if (error instanceof HttpFinalBadInputError) {
           this.posts.splice(0, 1);
           
           alert('POST: bad request.');
@@ -65,10 +65,10 @@ export class HttpFinalComponent implements OnInit {
     this.http.delete(post.id)
       .subscribe(
         null, 
-        (error: HttpError) => {
+        (error: HttpFinalError) => {
           this.posts.splice(index, 0, post);   // don't delete, add in place 0 the post object
 
-          if (error instanceof HttpNotFoundError) {
+          if (error instanceof HttpFinalNotFoundError) {
             console.log('found HttpNotFoundError');
             alert('This post is already deleted');
           }

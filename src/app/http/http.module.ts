@@ -1,3 +1,4 @@
+import { HttpMoshService } from './http-mosh/services/http-mosh.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
@@ -16,10 +17,14 @@ import { HttpExtractService } from './http-extract-service/services/http-extract
 import { HttpDeletingDataComponent } from './http-deleting-data/http-deleting-data.component';
 import { HttpFinalComponent } from './http-final/http-final.component';
 import { HttpFinalService } from './http-final/services/http-final.service';
-import { HttpErrorHandler } from './http-final/common/http-error-nadler';
+import { HttpErrorHandler } from './common/http-error-nadler';
+import { HttpMoshComponent } from './http-mosh/http-mosh.component';
 
 const appRoutes: Routes = [
-  { path: 'http', 'component': HttpComponent },
+  { path: 'http', 'component': HttpComponent , children: [
+      { path: 'mosh', 'component': HttpMoshComponent }
+    ]
+  }
 ];
 
 @NgModule({
@@ -30,7 +35,8 @@ const appRoutes: Routes = [
     HttpUpdatingDataComponent,
     HttpExtractServiceComponent,
     HttpDeletingDataComponent,
-    HttpFinalComponent
+    HttpFinalComponent,
+    HttpMoshComponent
 ],
   imports: [
     BrowserModule,
@@ -42,7 +48,8 @@ const appRoutes: Routes = [
   providers: [
     HttpExtractService, 
     HttpFinalService,
-    { provide: ErrorHandler, useClass: HttpErrorHandler}
+    HttpMoshService,
+    { provide: ErrorHandler, useClass: HttpErrorHandler}    
   ],
   exports: [RouterModule]
 })
