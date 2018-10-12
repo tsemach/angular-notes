@@ -18,9 +18,11 @@ export class HttpFinalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.getAll()
-      .subscribe(posts => this.posts = posts);      
-  }
+    // this.http.getAll()
+    //   .subscribe(posts => this.posts = posts);      
+    this.http.get(10)        
+      .subscribe(posts => this.posts = posts.slice(0, 5))
+    }
 
   createPost(input: HTMLInputElement) {
     let post = { title: input.value }    
