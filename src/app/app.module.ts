@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HtmlAttrComponent } from './basic/html-attr/html-attr.component';
@@ -15,6 +16,7 @@ import { EventPropagationComponent } from './basic/event-propagation/event-propa
 import { EventFilteringComponent } from './basic/event-filtering/event-filtering.component';
 import { TemplateVariabelsComponent } from './basic/template-variabels/template-variabels.component';
 import { NgContantComponent } from './basic/ng-contant/ng-contant.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { TwoWayBindingComponent } from './basic/two-way-binding/two-way-binding.component';
 import { BasicComponent } from './basic/basic.component';
 import { AppFormsModule } from './forms/forms.module';
@@ -23,7 +25,8 @@ import { RoutingComponent } from './routing/routing.component';
 import { DirectiveComponent } from './basic/directive/directive.component';
 import { InputFormatDirective } from './basic/directive/input-format.directive';
 import { AppBootstrapModule } from './bootstrap/bootstrap.module';
-import { HttpComponent } from './http/http.component';
+//import { MaterialComponent } from './material/material.component';
+import { AppMaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -40,15 +43,19 @@ import { HttpComponent } from './http/http.component';
     RoutingComponent,    
     DirectiveComponent,
     InputFormatDirective,
+    //MaterialComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    FormsModule,    
     BrowserAnimationsModule,
+    NgbModule,
+    MDBBootstrapModule.forRoot(),
     AppRoutingModule,
-    AppBootstrapModule,
     AppFormsModule,
-    AppHttpModule
+    AppHttpModule,
+    AppBootstrapModule,
+    AppMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

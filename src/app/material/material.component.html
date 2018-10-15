@@ -1,0 +1,40 @@
+
+<div class="row">
+  <!-- <a class="nav-link" [routerLink]="['/forms', 'angular']" style="background-color: black; color: coral; width: 90px;" href="#">Angular</a>
+  <a class="nav-link" [routerLink]="['/forms', 'exercise']" style="background-color: black; color: coral; width: 90px;" href="#">Exercise</a> -->
+  <a 
+    class="nav-link" 
+    [routerLink]="['/forms', 'examples']" 
+    style="background-color: black; color: coral; width: 80px; margin-bottom: 10px; margin-left: 15px;" 
+    href="#">Examples</a>
+
+    <a 
+    class="nav-link" 
+    [routerLink]="['/forms', 'services']" 
+    style="background-color: black; color: coral; width: 80px; margin-bottom: 10px; margin-left: 15px;" 
+    href="#">Services</a>
+    
+</div>
+<router-outlet></router-outlet>
+
+<div class="row">
+  <!-- this is the left column -->
+  <div class="col-6" style="border-style: ridge;">
+    <p></p>
+    <div class="div-note" style="padding: 3px;">    
+      <h4>Note: Material Buttons</h4>
+      <app-material-button></app-material-button>    
+    </div>
+    <p></p>
+    <div class="div-note">    
+      <h4>Note: Material Dialog</h4>
+      <app-material-dialog></app-material-dialog>    
+    </div>
+  </div>
+  <div class="col-6" style="border-style: ridge;">
+    <!-- this is the right column -->
+    <hr>
+    <h4>Note: ..</h4>
+    <hr>    
+  </div>
+</div>

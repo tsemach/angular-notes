@@ -16,7 +16,7 @@ const appRoutes: Routes = [
   { path: 'forms', 'component': FormsComponent, children: [
   ] },
   { path: 'routing', 'component': RoutingComponent },
-  { path: 'bootstrap', 'component': BootstrapComponent }
+  { path: 'bootstrap', 'component': BootstrapComponent },
 ];
 
 @NgModule({

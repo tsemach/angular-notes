@@ -12,4 +12,9 @@ export class BootstrapComponent implements OnInit {
   ngOnInit() {
   }
 
+  isForm = false;  
+  toggle() {
+    this.isForm = !this.isForm;
+  }
+
 }

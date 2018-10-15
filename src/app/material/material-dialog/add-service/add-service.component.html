@@ -1,0 +1,76 @@
+
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+
+
+<div [hidden]="submitted">
+  <h3>Exercise Form</h3>
+  {{diagnostic}}
+  <form #serviceForm="ngForm" (ngSubmit)="onSubmit(serviceForm)">
+    <div class="form-group">
+      <b><label for="name">Service Name</label></b>
+      <input 
+        class="form-control" 
+        type="text" ngModel name="serviceName" 
+        #spy #serviceName="ngModel"
+        id="name" 
+        required 
+        minlength="4" 
+        [(ngModel)]="name" 
+        (change)="log(serviceName)">
+      <div class="alert alert-danger" [hidden]="serviceName.valid || serviceName.pristine">Course Name is required</div>
+      <div class="alert alert-danger" *ngIf="serviceName.errors && serviceName.errors.minlength">Name minimum charachters is {{ serviceName.errors.minlength.requiredLength}}</div>
+
+      TODO: remove this: {{name}} : {{spy.className}}
+    </div>
+
+    <div class="form-group">
+      <b><label for="categories">Category</label></b>
+      <select class="form-control" id="categories" required ngModel name="courseCategory" #courseCategory="ngModel" [(ngModel)]="category" (change)="log(courseCategory)">
+        <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+      </select>
+      TODO: remove this: {{category}}
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" ngModel name="isGuarantee" [(ngModel)]="isGuarantee">
+          Check for 30 days many back guarantee
+          </label>
+          <p> {{serviceForm.value | json }}</p>
+      </div>
+    </div>
+    
+    <button type="submit" class="btn btn-success" style="margin-right: 10px" [disabled]="!serviceForm.form.valid">Submit</button>
+    <button type="button" class="btn btn-primary" style="margin-right: 10px" (click)="newCourse(); serviceForm.reset()">New Course</button>
+  </form>  
+</div>
+
+<div [hidden]="!submitted">
+  <h3>You submitted the following:</h3>
+  <div class="row" style="padding-left: 10px;">
+    <div class="col-xs-3">Name: </div>
+    <div class="col-xs-9  pull-left" style="color: red;">{{ name }}</div>
+  </div>
+  <div class="row" style="padding-left: 10px;">
+    <div class="col-xs-3">Category: </div>
+    <div class="col-xs-9 pull-left" style="color: red;">{{ category }}</div>
+  </div>
+  <div class="row" style="padding-left: 10px;">
+    <div class="col-xs-3">isGuarantee: </div>
+    <div class="col-xs-9 pull-left" style="color: red;">{{ isGuarantee }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions> 
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+</mat-dialog-actions>
+

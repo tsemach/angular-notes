@@ -3,12 +3,16 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "github": {
+    "angular-notes": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+          "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -23,16 +27,18 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/font-awesome/css/font-awesome.min.css",
 							"node_modules/codemirror/lib/codemirror.css",
 							"node_modules/codemirror/theme/monokai.css",
 							"node_modules/codemirror/theme/idea.css",
 							"node_modules/codemirror/theme/eclipse.css",
-              "src/styles.css"
+              "node_modules/font-awesome/scss/font-awesome.scss",
+              "node_modules/angular-bootstrap-md/scss/bootstrap/bootstrap.scss",
+              "node_modules/angular-bootstrap-md/scss/mdb-free.scss",
+              "src/styles.scss"
             ],
-            "scripts": [
-							"node_modules/popper.js/dist/umd/popper.min.js"
+            "scripts": [							
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js"
 						]
           },
           "configurations": {
@@ -58,18 +64,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "github:build"
+            "browserTarget": "angular-notes:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "github:build:production"
+              "browserTarget": "angular-notes:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "github:build"
+            "browserTarget": "angular-notes:build"
           }
         },
         "test": {
@@ -103,7 +109,7 @@
         }
       }
     },
-    "github-e2e": {
+    "angular-notes-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {

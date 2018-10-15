@@ -12,7 +12,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     BootstrapComponent,
-    // BootstrapSubMenuComponent,
     BootstrapComponent,
     NavbarDropdownLinkComponent,
   ],
