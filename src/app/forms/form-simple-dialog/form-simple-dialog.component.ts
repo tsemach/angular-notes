@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'app-simple-dialog',
-  templateUrl: './simple-dialog.component.html',
-  styleUrls: ['./simple-dialog.component.scss']
+  selector: 'app-form-simple-dialog',
+  templateUrl: './form-simple-dialog.component.html',
+  styleUrls: ['./form-simple-dialog.component.scss']
 })
-export class SimpleDialogComponent implements OnInit {
-  description = '(Simple Dialog) Add Service';
+export class FormSimpleDialogComponent implements OnInit {
+  description = 'Form Add Service';
 
   name = '';
   host = '';
   port = '';
 
-  constructor(private dialogRef: MatDialogRef<SimpleDialogComponent>) {
+  constructor(private dialogRef: MatDialogRef<FormSimpleDialogComponent>) {
   }
 
   ngOnInit() {
